@@ -1,0 +1,26 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="container">
+    <mat-card class="card">
+      <mat-card-header color="primary">
+        <h2 class="title">Login</h2>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="username" matInput [formControl]="username" />
+          <mat-error *ngIf="username.hasError('required')">
+            Please enter <strong>Username!</strong>
+          </mat-error>
+          <!-- <syg-input-error formName="loginForm" fieldName="username" [error]="username.errors">
+          </syg-input-error> -->
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input type="password" placeholder="Password" matInput [formControl]="password" />
+          <mat-error *ngIf="password.hasError('required')">
+            Please enter <strong>Password!</strong>
+          </mat-error>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary">Login</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>

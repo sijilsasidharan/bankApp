@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30em;
+}
+mat-card-content {
+    border-radius: 1em;;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    max-width: 30%;
+    display: inline-block;
+    background: linear-gradient(45deg, #000000e0, #c2185bcf);
+    margin: 1%;
+    width: 30%;
+    min-height: 265px;
+}

@@ -1,0 +1,27 @@
+mat-toolbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+}
+
+.footer-list {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 8px;
+}
+   
+.footer-list .copy-right {
+    font-size: .5em;
+    flex: 1;
+    text-align: center;
+}
+
+
+.mat-toolbar {
+    background: linear-gradient(45deg, #101010a3, #c2185b);
+    color: #fff;
+  }

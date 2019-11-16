@@ -1,0 +1,20 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.title {
+    padding-left: 2%;
+}
+
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+.mat-toolbar {
+  background: linear-gradient(45deg, #101010a3, #c2185b);
+  color: #fff;
+}
+

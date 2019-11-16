@@ -1,0 +1,8 @@
+<mat-toolbar color="primary" [class.mat-elevation-z6]="true">
+  <mat-toolbar-row>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    <span class="title">BankApp</span>
+    <span class="example-spacer"></span>
+    <button *ngIf="isLoggedIn" mat-button (click)="logout()">Logout</button>
+  </mat-toolbar-row>
+</mat-toolbar>
