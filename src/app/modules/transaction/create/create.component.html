@@ -1,3 +1,124 @@
-<p>
-  create works!
-</p>
+<form [formGroup]="createForm">
+  <mat-grid-list cols="4" rowHeight="3:1">
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Customer number" matInput [formControl]="customer_number" />
+        <mat-error *ngIf="customer_number.hasError('required')">
+          Please enter <strong>Customer number!</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Reference Number" matInput [formControl]="reference" />
+        <mat-error *ngIf="reference.hasError('required')">
+          Please enter <strong>Reference number!</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Customer name" matInput [formControl]="name" />
+        <mat-error *ngIf="name.hasError('required')">
+          Please enter <strong>name!</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Customer address" matInput [formControl]="address" />
+        <mat-error *ngIf="address.hasError('required')">
+          Please enter <strong>address!</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- row 2 -->
+
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Customer phone" matInput [formControl]="phone" />
+        <mat-error *ngIf="phone.hasError('required')">
+          Please enter <strong>phone number!</strong>
+        </mat-error>
+        <mat-error *ngIf="phone.hasError('pattern')">
+          Only <strong>numbers</strong> are allowed
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Transfer amount" matInput [formControl]="transfer_amount" />
+        <mat-error *ngIf="transfer_amount.hasError('required')">
+          Please enter <strong>transfer amount!</strong>
+        </mat-error>
+        <mat-error *ngIf="transfer_amount.hasError('pattern')">
+          Only <strong>numbers</strong> are allowed
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Transfer currency" matInput [formControl]="transfer_currency"
+          [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let currency of filteredOptions | async" [value]="currency">
+            {{currency}}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="transfer_currency.hasError('required')">
+          Please select <strong>currency!</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Benificiary bank" matInput [formControl]="benificiary_bank" />
+        <mat-error *ngIf="benificiary_bank.hasError('pattern')">
+          Only <strong>characters</strong> are allowed
+        </mat-error>
+        <mat-error *ngIf="benificiary_bank.hasError('required')">
+          Please enter <strong>beneficiary bank</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <!-- row 3 -->
+
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Beneficiary account number" matInput
+          [formControl]="beneficiary_account_number" />
+        <mat-error *ngIf="beneficiary_account_number.hasError('required')">
+          Please enter <strong>beneficiary account number!</strong>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Payment details" matInput [formControl]="payment_details" />
+        <mat-error *ngIf="payment_details.hasError('required')">
+          Please enter <strong>payment details!</strong>
+        </mat-error>
+        <mat-error *ngIf="payment_details.hasError('pattern')">
+          Only <strong>characters</strong> are allowed
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <div style="float: right;padding:5%;">
+    <button mat-raised-button color="primary" (click)="transferAmount()">Transfer amount</button>
+  </div>
+</form>

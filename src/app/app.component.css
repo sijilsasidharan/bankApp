@@ -1,9 +1,16 @@
 .container {
     margin: 5% 10%;
-    background-color: whitesmoke;
     border-radius: .5em;
     position: relative;
     min-height: 525px;
+}
+
+.bg-white {
+  background-color: whitesmoke;
+}
+
+.bg-dark {
+  background-color: #10101063;
 }
 
 .overlay {

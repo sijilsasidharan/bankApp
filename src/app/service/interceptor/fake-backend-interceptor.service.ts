@@ -3,7 +3,9 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
-import { User } from '../../model/user';
+import { User } from '../../model/user.model';
+import { Customer, TransferDetails } from '../../model/customer.model';
+import { customers } from '../../data/mock/customer'
 
 const users: User[] = [{ id: 1, username: 'test', password: 'test' }];
 
@@ -16,7 +18,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     return of(null)
       .pipe(mergeMap(handleRoute))
       .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
-      .pipe(delay(500))
+      .pipe(delay(1000))
       .pipe(dematerialize());
 
     function handleRoute() {
@@ -25,6 +27,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return authenticate();
         case url.endsWith('/users') && method === 'GET':
           return getUsers();
+        case url.endsWith('/getCustomer') && method === 'POST':
+          return getCustomer();
+        case url.endsWith('/transferAmount') && method === 'POST':
+          return transferAmount();
+        case url.endsWith('/getAllTransaction') && method === 'GET':
+          return getAllTransaction();
         default:
           // pass through any requests not handled above
           return next.handle(request);
@@ -65,6 +73,57 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
     function isLoggedIn() {
       return headers.get('Authorization') === 'Bearer fake-jwt-token';
+    }
+
+    function getCustomer() {
+      if (!isLoggedIn())
+        return unauthorized();
+      const { customer_number } = body;
+      const isCustomerExists = customers.filter(customer => customer.customer_number === Number(customer_number));
+      const customer = isCustomerExists.length ? isCustomerExists[0] : null;
+      console.log(customer)
+      return ok(customer);
+    }
+
+    function transferAmount() {
+      if (!isLoggedIn())
+        return unauthorized();
+      const { customer_number } = body;
+      const isCustomerExists = customers.filter(customer => customer.customer_number === Number(customer_number));
+      const customer = isCustomerExists.length ? isCustomerExists[0] : null;
+      if (customer) {
+        const { reference, transfer_amount,
+          transfer_currency,
+          benificiary_bank,
+          beneficiary_account_number,
+          payment_details } = body;
+
+        customer.trasfer_details.push({
+          reference: reference,
+          transfer_amount: transfer_amount,
+          transfer_currency: transfer_currency,
+          benificiary_bank: benificiary_bank,
+          beneficiary_account_number: beneficiary_account_number,
+          payment_details: payment_details
+        });
+        return ok('Transaction Success');
+      }
+      return error('Customer Details not found');
+    }
+
+    function getAllTransaction() {
+      if (!isLoggedIn())
+        return unauthorized();
+      let transactionDetails = customers.map(customer => {
+        const transfer = customer.trasfer_details.map(transferDetails => {
+          return { name: customer.name, ...transferDetails }
+        });
+        return transfer
+      })
+
+      transactionDetails = [].concat.apply([], transactionDetails);
+      console.log(transactionDetails)
+      return ok(transactionDetails);
     }
   }
 }

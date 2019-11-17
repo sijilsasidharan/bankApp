@@ -18,7 +18,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { InputErrorComponent } from './shared/input-error/input-error.component';
-import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar'
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 //service
 import { ErrorInterceptor } from './service/interceptor/error-interceptor.service';
 import { JwtInterceptor } from './service/interceptor/jwt-interceptor.service';

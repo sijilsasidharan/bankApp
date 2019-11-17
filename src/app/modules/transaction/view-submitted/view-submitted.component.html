@@ -1,3 +1,33 @@
-<p>
-  view-submitted works!
-</p>
+<table mat-table [dataSource]="transacationList" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="reference">
+    <th mat-header-cell *matHeaderCellDef> Reference No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.reference}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Customer Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="transfer_amount">
+    <th mat-header-cell *matHeaderCellDef> Transfer Amount </th>
+    <td mat-cell *matCellDef="let element"> {{element.transfer_amount}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="transfer_currency">
+    <th mat-header-cell *matHeaderCellDef> Transfer Currency </th>
+    <td mat-cell *matCellDef="let element"> {{element.transfer_currency}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
