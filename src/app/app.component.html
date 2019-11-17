@@ -5,5 +5,8 @@
     <mat-spinner></mat-spinner>
   </div> -->
   <router-outlet></router-outlet>
+  <div class="overlay" *ngIf="isLoading || isRouterChange">
+    <mat-spinner></mat-spinner>
+  </div>
 </section>
 <syg-footer></syg-footer>

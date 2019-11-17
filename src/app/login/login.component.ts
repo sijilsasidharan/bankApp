@@ -20,10 +20,11 @@ export class LoginComponent implements OnInit {
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.authService.logout();
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
   }
 
   login() {

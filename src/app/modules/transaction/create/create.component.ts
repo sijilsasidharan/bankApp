@@ -52,6 +52,11 @@ export class CreateComponent extends CreateTransactionForm implements OnInit, On
                 phone: custDetails.phone,
               });
             }
+            else {
+              this.createForm.reset({
+                customer_number: this.customer_number.value
+              });
+            }
           });
       });
     this.filteredOptions = this.transfer_currency.valueChanges
