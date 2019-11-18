@@ -22,6 +22,6 @@ mat-toolbar {
 
 
 .mat-toolbar {
-    background: linear-gradient(45deg, #101010a3, #c2185b);
+    /* background: linear-gradient(45deg, #101010a3, #c2185b); */
     color: #fff;
   }

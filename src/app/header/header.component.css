@@ -3,7 +3,7 @@
 }
 
 .title {
-    padding-left: 2%;
+    padding-left: .5%;
 }
 
 mat-toolbar {
@@ -14,7 +14,12 @@ mat-toolbar {
     z-index: 3;
 }
 .mat-toolbar {
-  background: linear-gradient(45deg, #101010a3, #c2185b);
+  /* background: linear-gradient(45deg, #101010a3, #c2185b); */
   color: #fff;
+}
+
+mat-icon {
+  color: #9E9E9E;
+    padding-left: 2%;
 }
 

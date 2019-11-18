@@ -7,8 +7,14 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should show label bankApp in header', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to SygmaAssignment!');
+    expect(page.getAppTitleText()).toEqual('BankApp');
   });
+
+  it('should show label Coding©problem in footer', () => {
+    page.navigateTo();
+    expect(page.getFooterText()).toEqual('Coding©problem');
+  });
+
 });

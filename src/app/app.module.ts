@@ -9,7 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component'
+import { FooterComponent } from './footer/footer.component';
+import { CustomSnackbarComponent } from './shared/custom-snackbar/custom-snackbar.component'
 //material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,7 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { InputErrorComponent } from './shared/input-error/input-error.component';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 //service
 import { ErrorInterceptor } from './service/interceptor/error-interceptor.service';
@@ -32,7 +32,7 @@ import { AuthGuardService } from './guard/auth-guard.service'
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    InputErrorComponent
+    CustomSnackbarComponent
   ],
   imports: [
     BrowserModule,

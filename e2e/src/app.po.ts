@@ -5,7 +5,11 @@ export class AppPage {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('syg-root h1')).getText();
+  getAppTitleText() {
+    return element(by.css('.title')).getText();
+  }
+
+  getFooterText() {
+    return element(by.css('.copy-right')).getText();
   }
 }

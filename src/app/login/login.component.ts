@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+//services
 import { AuthenticationService } from '../service/authentication.service';
+//rxjs
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators'
+import { first } from 'rxjs/operators';
+//material
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -10,9 +15,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  loginForm: FormGroup
+  loginForm: FormGroup;
+  private unsubscribe: Subject<void> = new Subject();
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
@@ -30,7 +36,10 @@ export class LoginComponent implements OnInit {
   login() {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value)
-        .pipe(first())
+        .pipe(
+          first(),
+          takeUntil(this.unsubscribe)
+        )
         .subscribe(
           data => {
             this.router.navigate(['/transaction']);
@@ -49,6 +58,11 @@ export class LoginComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   get username() {
