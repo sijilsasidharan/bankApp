@@ -55,19 +55,4 @@ describe('CreateComponent', () => {
     expect(component.transfer_currency.valid).toBeFalsy();
     expect(component.reference.valid).toBeFalsy();
   });
-
-  // it('load fields on entering customer number', fakeAsync(() => {
-  //   fixture.detectChanges();
-  //   component.customer_number.setValue(customer1.customer_number);
-  //   spyOn(TransactionService, 'prototype').and.returnValue(Promise.resolve(true));
-  //   component.ngOnInit();
-  //   tick();
-  //   fixture.detectChanges();
-  //   expect(component.name.value).toEqual(customer1.name);
-  //   const ref = component.reference.value;
-  //   const date = new DatePipe('en');
-  //   expect(ref.substring(0, 3)).toEqual('CUS');
-  //   expect(ref.substring(4, 12)).toEqual(date.transform(new Date(), 'yyyymmdd'));
-  //   expect(component.name.value).toEqual(customer1.name);
-  // }));
 });
