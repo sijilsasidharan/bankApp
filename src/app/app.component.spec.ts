@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //router module
@@ -16,7 +17,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { InputErrorComponent } from './shared/input-error/input-error.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -25,13 +25,13 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
         FooterComponent,
-        LoginComponent,
-        InputErrorComponent
+        LoginComponent
       ],
       imports: [
         BrowserAnimationsModule,
         ReactiveFormsModule,
         AppRoutingModule,
+        HttpClientModule,
         MatToolbarModule,
         MatButtonModule,
         MatProgressSpinnerModule,

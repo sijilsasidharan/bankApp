@@ -1,10 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { LoginComponent } from './login.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { AuthenticationService } from '../service/authentication.service'
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -13,7 +18,8 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [BrowserAnimationsModule, ReactiveFormsModule, MatCardModule, MatInputModule]
+      imports: [BrowserAnimationsModule, RouterTestingModule, HttpClientTestingModule, ReactiveFormsModule, MatSnackBarModule, MatCardModule, MatInputModule],
+      providers: [AuthenticationService]
     })
       .compileComponents();
   }));
@@ -70,7 +76,6 @@ describe('LoginComponent', () => {
     username.setValue('abc');
     password.setValue('def');
     expect(component.loginForm.valid).toBeTruthy();
-
 
   })
 

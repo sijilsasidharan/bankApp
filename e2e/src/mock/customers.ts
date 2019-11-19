@@ -4,7 +4,7 @@ export const customer2 = {
     customer_number: 123457,
     name: 'Smith',
     address: 'Street 2',
-    phone: 9827364,
+    phone: '9827364',
     trasfer_details: [
         {
             reference: 'CUS201909031001', transfer_amount: 4000,

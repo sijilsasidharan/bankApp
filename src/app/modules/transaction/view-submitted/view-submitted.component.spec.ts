@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { ViewSubmittedComponent } from './view-submitted.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { TransactionService } from '../services/transaction.service'
 
 describe('ViewSubmittedComponent', () => {
   let component: ViewSubmittedComponent;
@@ -8,9 +13,11 @@ describe('ViewSubmittedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ViewSubmittedComponent ]
+      declarations: [ViewSubmittedComponent],
+      imports: [BrowserAnimationsModule, HttpClientTestingModule, MatTableModule, MatPaginatorModule],
+      providers: [TransactionService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
